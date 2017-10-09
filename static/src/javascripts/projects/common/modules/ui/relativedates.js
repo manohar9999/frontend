@@ -230,4 +230,4 @@ const init = (opts: RelativeDateOptions = {}): void => {
     replaceLocaleTimestamps();
 };
 
-export { makeRelativeDate, isWithinSeconds, init };
+export { makeRelativeDate, isWithinSeconds, replaceLocaleTimestamps, init };
