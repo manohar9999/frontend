@@ -74,9 +74,9 @@ var handleAssetRequest = function (event) {
                     }).then(function(fetchedResponse) {
                         console.log('*** fetchedResponse ***', fetchedResponse);
                         // Check if we received a valid response
-                        if(!fetchedResponse || fetchedResponse.status !== 200 || fetchedResponse.type !== 'basic') {
-                            return fetchedResponse;
-                        }
+                        // if(!fetchedResponse || fetchedResponse.status !== 200 || fetchedResponse.type !== 'basic') {
+                        //     return fetchedResponse;
+                        // }
 
                         // IMPORTANT: Clone the response. A response is a stream
                         // and because we want the browser to consume the response
