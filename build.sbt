@@ -53,8 +53,20 @@ val common = library("common").settings(
     ophanEventModel
   )
 ).settings(
-    mappings in TestAssets ~= filterAssets
+    mappings in TestAssets ~= filterAssets,
+    fortifySettings
 )
+
+lazy val fortifySettings = Seq(
+  credentials += Credentials(
+  Path.userHome / ".lightbend" / "commercial.credentials"),
+  resolvers += Resolver.url(
+  "lightbend-commercial-releases",
+  new URL("http://repo.lightbend.com/commercial-releases/"))(
+  Resolver.ivyStylePatterns),
+  libraryDependencies += compilerPlugin(
+  "com.lightbend" %% "scala-fortify" % "aa07381f" classifier "assembly"),
+  scalacOptions += s"-P:fortify:build=guardian-frontend")
 
 val commonWithTests = withTests(common)
 
