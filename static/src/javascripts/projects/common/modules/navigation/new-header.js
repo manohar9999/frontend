@@ -218,16 +218,14 @@ const toggleEditionPickerDropdown = () => {
                 menu.classList.toggle(openClass, !isOpen);
 
                 if (!isOpen) {
-                    mediator.on(
-                        'module:clickstream:click', clickSpec => {
-                            const elem = clickSpec ? clickSpec.target : null;
+                    mediator.on('module:clickstream:click', clickSpec => {
+                        const elem = clickSpec ? clickSpec.target : null;
 
-                            // if anywhere else but the links are clicked, the dropdown will close
-                            if (elem !== menu) {
-                                toggleEditionPickerDropdown();
-                            }
+                        // if anywhere else but the links are clicked, the dropdown will close
+                        if (elem !== menu) {
+                            toggleEditionPickerDropdown();
                         }
-                    );
+                    });
                 } else {
                     // when the dropdown closes, remove event
                     mediator.removeEvent('module:clickstream:click');
